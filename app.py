@@ -89,6 +89,9 @@ ELEMENT_HTML = f"""
 """
 st.write(ELEMENT_HTML, unsafe_allow_html=True)
 
+st.warning('Designed for demo purpose, this app uses only a very reduced sample of businesses')
+st.info('Source code: https://github.com/thiagomoreiraleite/nlpreview')
+
 row1_1, row1_2, row1_3 = st.beta_columns((8,2,13))
 with row1_1:
   WELCOME_HTML = f"""
