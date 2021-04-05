@@ -5,10 +5,10 @@ install_requirements:
 	@pip install -r requirements.txt
 
 check_code:
-	@flake8 scripts/* nlpreview/*.py
+	@flake8 scripts/* Sentimedia/*.py
 
 black:
-	@black scripts/* nlpreview/*.py
+	@black scripts/* Sentimedia/*.py
 
 test:
 	@coverage run -m pytest tests/*.py
@@ -22,8 +22,8 @@ clean:
 	@rm -f .coverage
 	@rm -fr */__pycache__ */*.pyc __pycache__
 	@rm -fr build dist
-	@rm -fr nlpreview-*.dist-info
-	@rm -fr nlpreview.egg-info
+	@rm -fr Sentimedia-*.dist-info
+	@rm -fr Sentimedia.egg-info
 
 install:
 	@pip install . -U
