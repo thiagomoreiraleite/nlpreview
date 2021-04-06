@@ -26,32 +26,8 @@ st.set_page_config(
             page_icon=favicon,
             layout="wide")
 
-# import numpy as np
+import numpy as np
 import pandas as pd
-
-# # import seaborn as sns
-# # import imageio
-# import folium
-
-# import folium.plugins as plugins
-# # from ipywidgets import interact
-# from wordcloud import WordCloud, STOPWORDS
-# import spacy
-# import scattertext as sct
-
-# # GET DATA
-# @st.cache
-# def get_cached_data():
-#   bus_data = dv.get_bus_data()
-#   review_data = dv.get_review_data()
-#   return bus_data, review_data
-
-# get_cached_data()
-
-#DEFAULT PARAMETERS
-city_name_input = "Boston"
-rest_name_input = "Mike's Pastry"
-rating_input = 3
 
 #LAYING OUT THE SIDE BAR
 st.sidebar.markdown(f"""
@@ -70,11 +46,11 @@ st.sidebar.header('Word Cloud and Bar Chart Selections')
 double_entry = st.sidebar.radio('Benchmark your business to others', ('Single View', 'Display Benchmark'))
 
 rest_name_input2 = 'Parish Cafe and Bar'
-rest_name_input3 = 'Bistro du Midi'
+rest_name_input3 = 'Tatte Bakery & Cafe'
 rest_name_input2 = st.sidebar.text_input('Business Name', 'Parish Cafe and Bar', key='rest_name_input2')
 if double_entry == 'Display Benchmark':
   st.sidebar.subheader('Select a business for Benchmarking')
-  rest_name_input3 = st.sidebar.text_input('Benchmark Business Name', 'Bistro du Midi', key='rest_name_input3')
+  rest_name_input3 = st.sidebar.text_input('Benchmark Business Name', 'Tatte Bakery & Cafe', key='rest_name_input3')
 
 st.sidebar.header('Upload Reviews')
 st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -90,7 +66,7 @@ ELEMENT_HTML = f"""
 st.write(ELEMENT_HTML, unsafe_allow_html=True)
 
 st.warning('Designed for demo purpose, this app uses only a very reduced sample of businesses')
-st.info('Source code: https://github.com/thiagomoreiraleite/nlpreview')
+st.info('Source code: https://github.com/pedro-franca/nlpreview and https://github.com/thiagomoreiraleite/nlpreview')
 
 row1_1, row1_2, row1_3 = st.beta_columns((8,2,13))
 with row1_1:
