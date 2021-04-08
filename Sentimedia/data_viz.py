@@ -25,10 +25,10 @@ def get_bus_data():
     df_restaurants = df_restaurants[df_restaurants.categories.notna()]
     df_restaurants = df_restaurants[df_restaurants.categories.str.contains("Restaurants")]
 
-    # df_rest_filter = df_restaurants[(df_restaurants.city == 'Boston') | (df_restaurants.name == 'Westerville')].head(1000)
-    df_rest_filter_city = df_restaurants[(df_restaurants.city == 'Boston') & (df_restaurants['review_count'] < 100) & (df_restaurants['review_count'] > 80) ].head(20)
-    df_rest_filter_default = df_restaurants[(df_restaurants.city == 'Boston') & (df_restaurants.name == 'Parish Cafe and Bar') | (df_restaurants.name == 'Bistro du Midi')]
-    df_rest_filter = pd.concat([df_rest_filter_city, df_rest_filter_default])
+    df_rest_boston = df_restaurants[(df_restaurants.city == 'Boston') & (df_restaurants.review_count.between(1300, 1500) | df_restaurants.review_count.between(200, 500))]
+    df_rest_westerville = df_restaurants[(df_restaurants.city == 'Westerville')].sort_values('review_count', ascending=False).head(50)
+
+    df_rest_filter = pd.concat([df_rest_boston, df_rest_westerville])
 
     df_rest_filter.to_pickle("bus_data.pkl", protocol=2)
     print('Business data saved')
@@ -93,10 +93,6 @@ def make_folium(city_name,rest_name,rating):
             folium.Marker(data[point][:-2],popup=f'{str(data[point][-2])}, {str(data[point][-1])} stars').add_to(marker_cluster)
     return m
 
-#interact(make_folium,city_name="Orlando",rest_name='Subway',rating=(0,5,0.5))
-
-
-
 ##### HTML- NLP #######
 def good_bad_review(x):
     if x >= 4:
@@ -127,22 +123,6 @@ def get_sct_html(rest_name, city_name):
 
 
 ###### WordCloud #####
-# def make_wordcloud(rest_name):
-#     p_dict_10, p_dict_30, n_dict_10, n_dict_30 = get_dicts(rest_name, pd.read_pickle("review_data.pkl"))
-
-#     wordcloud_good = WordCloud(background_color="white").generate_from_frequencies(p_dict_30)
-#     wordcloud_bad = WordCloud(background_color="white").generate_from_frequencies(n_dict_30)
-
-#     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 10))
-
-#     axes[0].imshow(wordcloud_good, interpolation='bilinear')
-#     axes[0].axis("off")
-
-#     axes[1].imshow(wordcloud_bad, interpolation='bilinear')
-#     axes[1].axis("off")
-
-#     return fig.tight_layout()
-
 def make_wordcloud_interactive(rest_name, stop_list_pos, stop_list_neg):
     p_dict_10, p_dict_30, n_dict_10, n_dict_30 = get_dicts(rest_name, pd.read_pickle("review_data.pkl"))
     data_positive = [(k, str(v)) for k, v in p_dict_30.items() if k not in stop_list_pos]
@@ -172,19 +152,6 @@ def make_wordcloud_interactive(rest_name, stop_list_pos, stop_list_neg):
     return c_positive, c_negative, data_positive, data_negative
 
 ####### Barplot ######
-# def make_barplot(rest_name):
-#     p_dict_10, p_dict_30, n_dict_10, n_dict_30 = get_dicts(rest_name, pd.read_pickle("review_data.pkl"))
-#     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
-#     plt.suptitle('Why the restaurant is rated bad or good')
-#     fig.text(0.5, 0, 'Words', ha='center')
-#     fig.text(0, 0.5, 'Frequency', va='center', rotation='vertical')
-#     axes[0].bar(n_dict_10.keys(),n_dict_10.values(), color='r', label='negative')
-#     axes[0].tick_params(labelrotation=45)
-#     axes[0].legend()
-#     axes[1].bar(p_dict_10.keys(),p_dict_10.values(), color='b', label='positive')
-#     axes[1].tick_params(labelrotation=45)
-#     axes[1].legend()
-#     return fig.tight_layout()
 
 def make_barplot_interactive(rest_name, stop_list_pos, stop_list_neg):
     p_dict_10, p_dict_30, n_dict_10, n_dict_30 = get_dicts(rest_name, pd.read_pickle("review_data.pkl"))
