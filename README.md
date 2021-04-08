@@ -1,4 +1,4 @@
-![Alt text](/thiagomoreiraleite/nlpreview/logo2.png?raw=true "Sentimedia Logo")
+![Alt text](https://github.com/thiagomoreiraleite/nlpreview/blob/master/logo2.png?raw=true "Sentimedia Logo")
 # About the Product
 
 Sentimedia is a simple solution to monitor critical social media reviews about businesses and assess sentiment of brands in an intuitive and visual way
