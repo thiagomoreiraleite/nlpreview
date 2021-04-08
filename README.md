@@ -1,74 +1,16 @@
-# Data analysis
-- Document here the project: Sentimedia
-- Description: Project Description
-- Data Source:
-- Type of analysis:
+![Alt text](/thiagomoreiraleite/nlpreview/logo2.png?raw=true "Sentimedia Logo")
+# About the Product
 
-Please document the project the better you can.
+Sentimedia is a simple solution to monitor critical social media reviews about businesses and assess sentiment of brands in an intuitive and visual way
 
-# Startup the project
+* []()A Natural Language Processing model  trained with YELP dataset to predict the rating of each review
+* []()The probabilistic model used by Sentimedia  is capable of learning what group of words would be in either a positive or negative review
+* []()Generate sentiment analysis from the collected data
+* []()Visually explore businesses' strengths and weaknesses
 
-The initial setup.
+## Usage
 
-Create virtualenv and install the project:
-```bash
-sudo apt-get install virtualenv python-pip python-dev
-deactivate; virtualenv ~/venv ; source ~/venv/bin/activate ;\
-    pip install pip -U; pip install -r requirements.txt
-```
+We invite you to try our tool through this link [Sentimedia](https://sentimedia.herokuapp.com/)
 
-Unittest test:
-```bash
-make clean install test
-```
-
-Check for Sentimedia in gitlab.com/{group}.
-If your project is not set please add it:
-
-- Create a new project on `gitlab.com/{group}/Sentimedia`
-- Then populate it:
-
-```bash
-##   e.g. if group is "{group}" and project_name is "Sentimedia"
-git remote add origin git@github.com:{group}/Sentimedia.git
-git push -u origin master
-git push -u origin --tags
-```
-
-Functionnal test with a script:
-
-```bash
-cd
-mkdir tmp
-cd tmp
-Sentimedia-run
-```
-
-# Install
-
-Go to `https://github.com/{group}/Sentimedia` to see the project, manage issues,
-setup you ssh public key, ...
-
-Create a python3 virtualenv and activate it:
-
-```bash
-sudo apt-get install virtualenv python-pip python-dev
-deactivate; virtualenv -ppython3 ~/venv ; source ~/venv/bin/activate
-```
-
-Clone the project and install it:
-
-```bash
-git clone git@github.com:{group}/Sentimedia.git
-cd Sentimedia
-pip install -r requirements.txt
-make clean install test                # install and test
-```
-Functionnal test with a script:
-
-```bash
-cd
-mkdir tmp
-cd tmp
-Sentimedia-run
-```
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
